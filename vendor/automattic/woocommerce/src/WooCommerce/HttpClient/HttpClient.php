@@ -125,11 +125,15 @@ class HttpClient
      * @return string
      */
     protected function buildApiUrl($url)
-    {
-        $api = $this->options->isWPAPI() ? $this->options->apiPrefix() : '/wc-api/';
+{
+    // Garante que $url não seja null antes de usar rtrim
+    $url = $url ?? '';
 
-        return \rtrim($url, '/') . $api . $this->options->getVersion() . '/';
-    }
+    $api = $this->options->isWPAPI() ? $this->options->apiPrefix() : '/wc-api/';
+
+    return \rtrim($url, '/') . $api . $this->options->getVersion() . '/';
+}
+
 
     /**
      * Build URL.

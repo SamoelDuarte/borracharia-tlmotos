@@ -16,18 +16,18 @@ class Cron extends CI_Controller
     public function sync_categories()
     {
         // Passo 1: Buscar todos os produtos
-        $products = $this->Item->get_all(); // Presume que você tenha um método para obter todos os produtos
-        // print_r($products->result());
-        // exit;
+        $products = $this->Item->get_categoris_null(); // Presume que você tenha um método para obter todos os produtos
+      
         foreach ($products->result() as $product) {
-
-
+            // print_r($product);
+            // exit;
+        
             // Pega a categoria do produto como texto
             $category_name = $product->category; // Ajuste para o nome correto da coluna
 
             // Passo 2: Verificar se a categoria existe na tabela categories_products
             $category = $this->Categorie->get_by_name($category_name); // Presume que você tenha um método para buscar categorias pelo nome
-
+          
             // Passo 3: Se a categoria não existir, insira-a
             if (!$category) {
                 $category_name = ucwords(strtolower($category_name)); // Torna a primeira letra de cada palavra maiúscula
@@ -37,9 +37,13 @@ class Cron extends CI_Controller
             } else {
                 $category_id = $category->category_id; // Categoria já existe, captura o ID existente
             }
+            echo "categoria nome ::::::".$category_name ."--------categoria id :".$category_id."<br>";
+           
 
             // Passo 4: Atualizar o produto com o category_id
             $this->Item->update_category_id($product->item_id, $category_id); // Atualiza o produto com o novo category_id
+
+            
         }
     }
 

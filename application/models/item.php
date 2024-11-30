@@ -26,6 +26,17 @@
 			return $this->db->get(); // Retorna o resultado da query
 		}
 
+		function get_categoris_null()
+		{
+			$this->db->select('items.*, categories_products.category_name'); // Seleciona os dados de items e o nome da categoria
+			$this->db->from('items');
+			$this->db->join('categories_products', 'items.category_id = categories_products.category_id', 'left'); // Faz o JOIN com a tabela de categorias
+			
+			$this->db->where('items.category_id', null); // Filtra por itens que não estão deletados
+			$this->db->limit(200); // Filtra por itens que não estão deletados
+			return $this->db->get(); // Retorna o resultado da query
+		}
+
 		function get_sinc_wc()
 		{
 			$this->db->select('i.*, c.category_name,c.category_id'); // Seleciona os dados de items e o nome da categoria
