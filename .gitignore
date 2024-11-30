@@ -1,0 +1,31 @@
+# Arquivos de configuração específicos do ambiente (mantenha fora do controle de versão)
+application/config/*
+
+# Cache e Sessões
+application/cache/*
+!application/cache/index.html   # Manter o index.html para evitar erros de diretório vazio
+application/sessions/*
+
+# Logs
+application/logs/*
+!application/logs/index.html    # Manter o index.html para evitar erros de diretório vazio
+
+# Diretórios de uploads e arquivos temporários
+uploads/*
+!uploads/index.html             # Manter o index.html para evitar erros de diretório vazio
+tmp/*                           # Pasta temporária
+
+# Dependências externas
+vendor/                         # Diretório do Composer, se usado
+composer.lock                   # Arquivo de dependências específico do projeto
+
+# Arquivos de ambiente e de configuração da IDE
+.env                            # Arquivo de variáveis de ambiente
+.idea/                          # Configurações de projeto do PHPStorm/IntelliJ
+*.swp                           # Arquivos temporários de edição do Vim
+*.swo
+*.bak                           # Arquivos de backup
+
+# Logs de pacotes e arquivos gerados por ferramentas locais
+npm-debug.log                   # Logs de erro do NPM, se aplicável
+yarn-error.log                  # Logs de erro do Yarn, se aplicável
