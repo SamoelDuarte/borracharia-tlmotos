@@ -16,7 +16,7 @@ uploads/*
 tmp/*                           # Pasta temporária
 
 # Dependências externas
-vendor/                         # Diretório do Composer, se usado
+vendor/*                         # Diretório do Composer, se usado
 composer.lock                   # Arquivo de dependências específico do projeto
 
 # Arquivos de ambiente e de configuração da IDE
