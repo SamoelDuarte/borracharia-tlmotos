@@ -33,7 +33,7 @@
 			$this->db->join('categories_products', 'items.category_id = categories_products.category_id', 'left'); // Faz o JOIN com a tabela de categorias
 			
 			$this->db->where('items.category_id', null); // Filtra por itens que não estão deletados
-			$this->db->limit(200); // Filtra por itens que não estão deletados
+			$this->db->limit(500); // Filtra por itens que não estão deletados
 			return $this->db->get(); // Retorna o resultado da query
 		}
 
