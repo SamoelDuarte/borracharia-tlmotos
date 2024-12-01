@@ -83,12 +83,12 @@ class Sale extends CI_Model
 				'item_cost_price' => $cur_item_info->cost_price,
 				'item_unit_price' => $item['price']
 			);
-			$sincWC = array(
-				'up_wc' => 1,
-			);
+			// $sincWC = array(
+			// 	'up_wc' => 1,
+			// );
 			
 			$this->db->where('item_id', $item['item_id']);
-			$this->db->update('items', $sincWC);
+			// $this->db->update('items', $sincWC);
 			$this->db->insert('sales_items', $sales_items_data);
 
 			//Update stock quantity

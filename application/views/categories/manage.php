@@ -12,7 +12,6 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Woocommerce</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -64,11 +63,6 @@
             },
             "columns": [{
                     "data": "category_name"
-                },
-                {
-                    "data": "wc_id",
-                    "orderable": false,
-                    "searchable": false
                 },
                 {
                     "data": "actions",

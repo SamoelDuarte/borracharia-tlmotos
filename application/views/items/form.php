@@ -80,7 +80,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 		</div>
 	</div>
 
-	<div class="field_row clearfix">
+	<!-- <div class="field_row clearfix">
 		<?php echo form_label('Preço Site:', 'Preço Site', array('class' => 'wide')); ?>
 		<div class='form_field'>
 			<?php echo form_input(
@@ -92,7 +92,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 				)
 			); ?>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="field_row clearfix">
 		<?php echo form_label('Preço CNPJ:', 'valor_cnpj', array('class' => ' wide')); ?>
@@ -108,7 +108,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 		</div>
 	</div>
 
-	<div class="field_row clearfix">
+	<!-- <div class="field_row clearfix">
 		<?php echo form_label('Altura(cm):', 'altura', array('class' => 'wide')); ?>
 		<div class='form_field'>
 			<?php echo form_input(
@@ -146,13 +146,12 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 			); ?>
 		</div>
 	</div>
-	<!-- Campo de Peso -->
 	<div class="field_row clearfix">
 		<?php echo form_label('Peso (g):', 'peso', array('class' => 'wide')); ?>
 		<div class='form_field'>
 			<?php echo form_input(array('name' => 'peso', 'id' => 'peso', 'value' => $item_info->peso)); ?>
 		</div>
-	</div>
+	</div> -->
 
 
 	<div class="field_row clearfix">
@@ -260,7 +259,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 		</div>
 	</div>
 
-	<div class="field_row clearfix">
+	<!-- <div class="field_row clearfix">
 		<?php echo form_label('Enviar Para WC:', 'Enviar Para WC', array('class' => 'wide')); ?>
 		<div class='form_field'>
 			<?php echo form_checkbox(
@@ -272,7 +271,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 				)
 			); ?>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- <div class="field_row clearfix">
 		<?php echo form_label('Produto em Destaque:', 'Produto em Destaque', array('class' => 'wide')); ?>
@@ -329,7 +328,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 			); ?>
 		</div>
 	</div>
-	<div id="gallery_section">
+	<!-- <div id="gallery_section">
 		<legend>Galeria</legend>
 
 		<div class="field_row clearfix">
@@ -358,7 +357,7 @@ echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', '
 				?>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 	<?php

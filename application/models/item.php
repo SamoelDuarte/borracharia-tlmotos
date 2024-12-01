@@ -45,7 +45,7 @@
 			$this->db->where('i.deleted', 0); // Filtra por itens que não estão deletados
 			$this->db->where('i.id_wc', null); // Filtra por itens com id_wc não nulo
 			$this->db->where('i.sinc_wc', 1); // Filtra por itens que não estão deletados
-			$this->db->where('i.up_wc', 0); // Filtra por itens que foram atualizados no WooCommerce
+			// $this->db->where('i.up_wc', 0); // Filtra por itens que foram atualizados no WooCommerce
 			$this->db->limit(1);
 
 			return $this->db->get()->result_array(); // Retorna o resultado da query
@@ -67,14 +67,14 @@
 
 
 
-		// Busca as imagens de um item
-		public function get_item_images($item_id)
-		{
-			$this->db->from('item_images');
-			$this->db->where('item_id', $item_id);
-			$query = $this->db->get();
-			return $query->result_array(); // Retorna um array com as URLs das imagens
-		}
+		// // Busca as imagens de um item
+		// public function get_item_images($item_id)
+		// {
+		// 	$this->db->from('item_images');
+		// 	$this->db->where('item_id', $item_id);
+		// 	$query = $this->db->get();
+		// 	return $query->result_array(); // Retorna um array com as URLs das imagens
+		// }
 
 		function count_all()
 		{
@@ -223,7 +223,7 @@
 					return false;
 				}
 			} else {
-				$item_data['up_wc'] = 1;
+				// $item_data['up_wc'] = 1;
 				$this->db->where('item_id', $item_id);
 				$this->db->update('items', $item_data);
 			}
@@ -460,7 +460,7 @@
 			// Seleciona os itens onde o campo id_wc é NULL ou vazio
 			$this->db->where('id_wc', NULL);  // Ou, se precisar especificar explicitamente:
 			$this->db->where('sinc_wc', 1);
-			$this->db->where('up_wc', 0);
+			// $this->db->where('up_wc', 0);
 			$this->db->limit($limit);
 
 			// Retorna os resultados da tabela 'items'

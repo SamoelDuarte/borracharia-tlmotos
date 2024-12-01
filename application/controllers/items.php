@@ -101,8 +101,8 @@ class Items extends Secure_area implements iData_controller
 		$data['default_tax_1_rate'] = ($item_id == -1) ? $this->Appconfig->get('default_tax_1_rate') : '';
 		$data['default_tax_2_rate'] = ($item_id == -1) ? $this->Appconfig->get('default_tax_2_rate') : '';
 
-		// Buscar as imagens relacionadas ao item
-		$data['item_images'] = $this->Item->get_item_images($item_id); // Adiciona as imagens à view
+		// // Buscar as imagens relacionadas ao item
+		// $data['item_images'] = $this->Item->get_item_images($item_id); // Adiciona as imagens à view
 
 		$this->load->view("items/form", $data);
 	}
@@ -195,19 +195,19 @@ class Items extends Secure_area implements iData_controller
 			'supplier_id' => $this->input->post('supplier_id') == '' ? null : $this->input->post('supplier_id'),
 			'item_number' => $this->input->post('item_number') == '' ? null : $this->input->post('item_number'),
 			'cost_price' => $this->input->post('cost_price'),
-			'sale_price' => $this->input->post('sale_price'),
+			// 'sale_price' => $this->input->post('sale_price'),
 			'unit_price' => $this->input->post('unit_price'),
-			'altura' => $this->input->post('altura'),
-			'largura' => $this->input->post('largura'),
-			'comprimento' => $this->input->post('comprimento'),
-			'peso' => $this->input->post('peso'),
+			// 'altura' => $this->input->post('altura'),
+			// 'largura' => $this->input->post('largura'),
+			// 'comprimento' => $this->input->post('comprimento'),
+			// 'peso' => $this->input->post('peso'),
 			'quantity' => $this->input->post('quantity'),
 			'reorder_level' => $this->input->post('reorder_level'),
 			'location' => $this->input->post('location'),
 			'allow_alt_description' => $this->input->post('allow_alt_description'),
 			'is_serialized' => $this->input->post('is_serialized'),
 			// 'on_sale' => $this->input->post('on_sale') == '1' ? 1 : 0, // Checkbox para indicar promoção
-			'sinc_wc' => $this->input->post('sinc_wc') == '1' ? 1 : 0,
+			// 'sinc_wc' => $this->input->post('sinc_wc') == '1' ? 1 : 0,
 			// 'featured' => $this->input->post('featured') == '1' ? 1 : 0  // Checkbox para indicar destaque
 		);
 
@@ -252,7 +252,7 @@ class Items extends Secure_area implements iData_controller
 			$this->Item_taxes->save($items_taxes_data, $item_id);
 
 			// Gerenciar upload de imagens
-			$this->handle_images_upload($item_id);
+			// $this->handle_images_upload($item_id);
 
 			// Integração com WooCommerce - Enviar ou atualizar o produto no WooCommerce
 			// $this->sync_with_woocommerce($item_data, $item_id);
@@ -412,12 +412,12 @@ class Items extends Secure_area implements iData_controller
 			'quantity' => $cur_item_info->quantity + $this->input->post('newquantity')
 		);
 
-		$sincWC = array(
-			'up_wc' => 1,
-		);
+		// $sincWC = array(
+		// 	'up_wc' => 1,
+		// );
 		
 		$this->db->where('item_id', $item_id);
-		$this->db->update('items', $sincWC);
+		// $this->db->update('items', $sincWC);
 
 
 		if ($this->Item->save($item_data, $item_id)) {

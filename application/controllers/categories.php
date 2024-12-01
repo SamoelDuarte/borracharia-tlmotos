@@ -31,13 +31,9 @@ class Categories extends Secure_area
 
 		$data = [];
 		foreach ($categories as $category) {
-			$wc_status = $category['wc_id']
-				? '<span class="badge badge-success">✓</span>'
-				: '<button class="btn btn-sm btn-primary send-to-wc" data-id="' . $category['category_id'] . '">Enviar para WC</button>';
-
+			
 			$data[] = [
 				'category_name' => $category['category_name'],
-				'wc_id' => $wc_status,
 				'actions' => '
 					<button class="btn btn-sm btn-warning edit-category" data-id="' . $category['category_id'] . '">Editar</button>
 					<button class="btn btn-sm btn-danger delete-category" data-id="' . $category['category_id'] . '">Excluir</button>
