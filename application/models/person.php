@@ -70,8 +70,7 @@ class Person extends CI_Model
 		// Se não existir $person_id ou a pessoa não existir, insere novo registro
 		if (!$person_id || !$this->exists($person_id)) {
 			if ($this->db->insert('people', $person_data)) {
-				$person_data['person_id'] = $this->db->insert_id();
-				return true;
+				return $this->db->insert_id();
 			}
 			return false;
 		}

@@ -82,14 +82,18 @@ class Customers extends Person_controller
 			'taxable' => $this->input->post('taxable') == '' ? 0 : 1,
 		);
 
+		$savePerson = array(
+			"person_data" => $person_data,
+			"customer_data" => $customer_data,
+		);
 
-
-
-		if ($this->Customer->save($person_data, $customer_data, $customer_id,$arrayCategorias)) {
+		// print_r($customer_id);
+		// exit;
+		if ($this->Customer->save($savePerson, $customer_id,$arrayCategorias)) {
 			//New customer
 			if ($customer_id == -1) {
 				echo json_encode(array('success' => true, 'message' => $this->lang->line('customers_successful_adding') . ' ' .
-					$person_data['first_name'] . ' ' . $person_data['last_name'], 'person_id' => $customer_data['person_id']));
+					$person_data['first_name'] . ' ' . $person_data['last_name'], 'person_id' => $customer_id));
 			} else //previous customer
 			{
 				echo json_encode(array('success' => true, 'message' => $this->lang->line('customers_successful_updating') . ' ' .
@@ -98,7 +102,7 @@ class Customers extends Person_controller
 		} else //failure
 		{
 			echo json_encode(array('success' => false, 'message' => $this->lang->line('customers_error_adding_updating') . ' ' .
-				$person_data['first_name'] . ' ' . $person_data['last_name'], 'person_id' => -1));
+				$person_data['first_name'] . ' ' . $person_data['last_name'], 'person_id' => $customer_id));
 		}
 	}
 
