@@ -1,5 +1,6 @@
 {
     "require": {
-        "laminas/laminas-barcode": "^2.14"
+        "laminas/laminas-barcode": "^2.14",
+        "automattic/woocommerce": "^3.1"
     }
 }

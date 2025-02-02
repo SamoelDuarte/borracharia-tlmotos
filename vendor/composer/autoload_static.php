@@ -23,6 +23,10 @@ class ComposerStaticInitac2d307f4ed514763a8119f3523066bb
             'Laminas\\ServiceManager\\' => 23,
             'Laminas\\Barcode\\' => 16,
         ),
+        'A' => 
+        array (
+            'Automattic\\WooCommerce\\' => 23,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -49,6 +53,10 @@ class ComposerStaticInitac2d307f4ed514763a8119f3523066bb
         'Laminas\\Barcode\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-barcode/src',
+        ),
+        'Automattic\\WooCommerce\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/automattic/woocommerce/src/WooCommerce',
         ),
     );
 
