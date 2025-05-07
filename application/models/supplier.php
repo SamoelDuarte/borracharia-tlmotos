@@ -82,26 +82,23 @@ class Supplier extends Person
 	{
 		$success = false;
 
-		// Inicia a transação
-		$this->db->trans_start();
 
-		// Salva os dados da pessoa usando o método da classe pai
-		if (parent::save($person_data, $supplier_id)) {
-			// Verifica se o fornecedor não existe (inserção) ou se já existe (atualização)
+		$person_id = parent::save($person_data, $supplier_id);
+
+		if ($person_id) {
+			// Agora $person_id tem um valor válido
 			if (!$supplier_id || !$this->exists($supplier_id)) {
-				// Se não existe, insere um novo fornecedor
-				$supplier_data['person_id'] = $person_data['person_id']; // Atribui person_id aos dados do fornecedor
+				$supplier_data['person_id'] = $person_id; // Atribui corretamente o ID
 				$success = $this->db->insert('suppliers', $supplier_data);
-				$supplier_id = $this->db->insert_id(); // Captura o ID do novo registro
+				$supplier_id = $person_id;
 			} else {
-				// Se já existe, atualiza o registro existente
 				$this->db->where('person_id', $supplier_id);
 				$success = $this->db->update('suppliers', $supplier_data);
 			}
+		} else {
+			$success = false; // Algo deu errado na inserção de `people`
 		}
 
-		// Completa a transação
-		$this->db->trans_complete();
 
 		// Retorna o sucesso da operação
 		return $success;
