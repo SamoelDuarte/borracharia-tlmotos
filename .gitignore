@@ -9,7 +9,7 @@ application/sessions/*
 # Logs
 application/logs/*
 !application/logs/index.html    # Manter o index.html para evitar erros de diretório vazio
-
+/index.php
 # Diretórios de uploads e arquivos temporários
 uploads/*
 !uploads/index.html             # Manter o index.html para evitar erros de diretório vazio
