@@ -182,7 +182,8 @@
 		function get_item_id($item_number)
 		{
 			$this->db->from('items');
-			$this->db->where('item_id', $item_number);
+			$this->db->where_in('item_id', [$item_number]);
+			$this->db->or_where_in('item_number', [$item_number]);
 
 			$query = $this->db->get();
 

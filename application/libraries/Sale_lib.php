@@ -174,7 +174,7 @@ class Sale_lib
 		// exit;
 		//try to get item id given an item_number
 		$item_id = $this->CI->Item->get_item_id($item_id);
-
+		
 		if (!$item_id)
 			return false;
 		// }else{

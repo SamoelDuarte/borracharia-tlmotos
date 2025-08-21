@@ -7,7 +7,7 @@ $lang['module_customers_desc']='Cadastrar, Atualizar, Excluir e Procurar Cliente
 $lang['module_suppliers']='Fornecedores';
 $lang['module_suppliers_desc']='Cadastrar, Atualizar, Excluir e Procurar Fornecedores | <b>Ctrl + 4</b>';
 
-$lang['module_employees']='Fucionários';
+$lang['module_employees']='Funcionários';
 $lang['module_employees_desc']='Cadastrar, Atualizar, Excluir e Procurar Funcionários | <b>Ctrl + 7</b>';
 
 $lang['module_sales']='Vendas (F2)';
@@ -34,7 +34,7 @@ $lang['module_item_kits_desc']='Adicionar, Atualizar, Excluir e Procurar Kits</b
 $lang['module_WooCommerce']='WooCommerce';
 $lang['module_WooCommerce_desc']='Configurar Woocommerce</b>';
 
-$lang['module_categories']='Cateorias';
+$lang['module_categories']='Categorias';
 $lang['module_categories_desc']='Configurar Categorias</b>';
 
 $lang['module_orders']='Pedidos';
