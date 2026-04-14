@@ -39,6 +39,7 @@ class Reports extends Secure_area
 	//Summary sales report
 	function summary_sales($start_date, $end_date, $sale_type, $export_excel = 0)
 	{
+		dd('1');
 		$this->load->model('reports/Summary_sales');
 		$model = $this->Summary_sales;
 		$tabular_data = array();
