@@ -682,6 +682,8 @@ class Reports extends Secure_area
 
 	function detailed_sales($start_date, $end_date, $sale_type, $export_excel = 0)
 	{
+
+	dd('1');
 		$this->load->model('reports/Detailed_sales');
 		$model = $this->Detailed_sales;
 
