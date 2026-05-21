@@ -39,7 +39,7 @@ class Reports extends Secure_area
 	//Summary sales report
 	function summary_sales($start_date, $end_date, $sale_type, $export_excel = 0)
 	{
-		dd('1');
+		// dd('1');
 		$this->load->model('reports/Summary_sales');
 		$model = $this->Summary_sales;
 		$tabular_data = array();
@@ -682,8 +682,9 @@ class Reports extends Secure_area
 
 	function detailed_sales($start_date, $end_date, $sale_type, $export_excel = 0)
 	{
+		// Ensure a fresh temp table structure for this report request.
+		$this->db->query('DROP TEMPORARY TABLE IF EXISTS ' . $this->db->dbprefix('sales_items_temp'));
 
-	dd('1');
 		$this->load->model('reports/Detailed_sales');
 		$model = $this->Detailed_sales;
 
@@ -694,7 +695,13 @@ class Reports extends Secure_area
 		$details_data = array();
 
 		foreach ($report_data['summary'] as $key => $row) {
-			$summary_data[] = array(anchor('sales/edit/' . $row['sale_id'], 'POS ' . $row['sale_id'], array('target' => '_blank')), $row['sale_date'], $row['items_purchased'], $row['employee_name'], $row['customer_name'], to_currency($row['subtotal']), to_currency($row['total']), to_currency($row['tax']), to_currency($row['profit']), $row['payment_type'], $row['comment']);
+			if ($sale_type == 'deletions') {
+				$sale_link = anchor('reports/deleted_sale_receipt/' . $row['sale_id'], 'POS ' . $row['sale_id'], array('target' => '_blank'));
+			} else {
+				$sale_link = anchor('sales/edit/' . $row['sale_id'], 'POS ' . $row['sale_id'], array('target' => '_blank'));
+			}
+
+			$summary_data[] = array($sale_link, $row['sale_date'], $row['items_purchased'], $row['employee_name'], $row['customer_name'], to_currency($row['subtotal']), to_currency($row['total']), to_currency($row['tax']), to_currency($row['profit']), $row['payment_type'], $row['comment']);
 
 			foreach ($report_data['details'][$key] as $drow) {
 				$details_data[$key][] = array($drow['name'], $drow['category'], $drow['serialnumber'], $drow['description'], $drow['quantity_purchased'], to_currency($drow['subtotal']), to_currency($drow['total']), to_currency($drow['tax']), to_currency($drow['profit']), $drow['discount_percent'] . '%');
@@ -712,6 +719,25 @@ class Reports extends Secure_area
 		);
 
 		$this->load->view("reports/tabular_details", $data);
+	}
+
+	function deleted_sale_receipt($sale_id)
+	{
+		$this->load->model('reports/Detailed_sales');
+		$receipt_data = $this->Detailed_sales->getDeletedSaleReceiptData($sale_id);
+
+		if (empty($receipt_data['details'])) {
+			show_error('Nao foi possivel reconstruir dados para o POS ' . $sale_id . '.');
+			return;
+		}
+
+		$data = array(
+			'sale_id' => $sale_id,
+			'summary' => $receipt_data['summary'],
+			'details' => $receipt_data['details']
+		);
+
+		$this->load->view('reports/deleted_sale_receipt', $data);
 	}
 
 	function detailed_receivings($start_date, $end_date, $sale_type, $export_excel = 0)

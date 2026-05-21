@@ -49,7 +49,7 @@
 	);
 	?>
 	</form>
-	<?php echo form_open("sales/delete/".$sale_info['sale_id'],array('id'=>'sales_delete_form')); ?>
+	<?php  echo form_open("sales/delete/".$sale_info['sale_id'],array('id'=>'sales_delete_form')); ?>
 		<?php
 		echo form_submit(array(
 			'name'=>'submit',

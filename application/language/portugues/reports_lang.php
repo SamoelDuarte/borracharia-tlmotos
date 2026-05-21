@@ -87,4 +87,5 @@ $lang['reports_detailed_receivings_report'] = 'Relatório Analítico de Entradas
 $lang['reports_sale_type'] = 'Operação';
 $lang['reports_all'] = 'Todas';
 $lang['reports_returns'] = 'Devoluções';
+$lang['reports_deletions'] = 'Deletados';
 ?>
